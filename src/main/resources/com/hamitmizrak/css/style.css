@@ -1,0 +1,38 @@
+*{
+    margin:0px;
+    padding:0;
+}
+
+.button {
+    -fx-background-color: #2F2F2F; /* Arka plan rengi: Antrasit gri */
+    -fx-text-fill: white; /* Yazı rengi: Beyaz */
+    -fx-font-size: 14px; /* Yazı boyutu */
+    -fx-padding: 10px 20px; /* İç boşluk */
+    -fx-border-color: #4CAF50; /* Çerçeve rengi: Yeşil */
+    -fx-border-width: 2px; /* Çerçeve kalınlığı */
+    -fx-border-radius: 8px; /* Yuvarlatılmış köşeler */
+    -fx-background-radius: 8px; /* Yuvarlatılmış köşeler */
+    -fx-cursor: hand; /* İmleç tipi */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 5, 0, 0, 2); /* Gölge efekti */
+    -fx-transition: all 0.3s ease; /* Hover ve diğer efektlere geçiş animasyonu */
+}
+
+/* Hover (üzerine gelince) efekti */
+.button:hover {
+    -fx-background-color: #4CAF50; /* Arka plan rengi: Yeşil */
+    -fx-text-fill: black; /* Yazı rengi: Siyah */
+}
+
+/* Basıldığında (pressed) efekti */
+.button:pressed {
+    -fx-background-color: #2E7D32; /* Daha koyu yeşil */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 5, 0, 0, 1); /* Daha az belirgin gölge */
+    -fx-translate-y: 2px; /* Hafif aşağı hareket */
+}
+
+
+.vbox {
+    -fx-background-image: url('../images/login.webp');
+    -fx-background-size: cover; /* Resmi kaplayacak şekilde boyutlandırır */
+    -fx-background-position: center; /* Resmi ortalar */
+}

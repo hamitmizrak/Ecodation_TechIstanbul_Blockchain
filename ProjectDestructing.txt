@@ -1,0 +1,13 @@
+src/
+├── com.hamitmizrak._javafx.dao/
+│   ├── UserDAO.java
+│   ├── DBConnection.java
+├── com.hamitmizrak._javafx.dto/
+│   ├── UserDTO.java
+├── com.hamitmizrak._javafx.controller/
+│   ├── LoginController.java
+│   ├── RegisterController.java
+├── view/
+│   ├── login.fxml
+│   ├── register.fxml
+├── MainApp.java

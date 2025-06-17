@@ -1,4 +1,4 @@
-package com.hamitmizrak.ecodation_techistanbul_blockchain;
+package com.hamitmizrak;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

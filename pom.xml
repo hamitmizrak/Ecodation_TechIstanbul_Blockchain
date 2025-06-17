@@ -235,7 +235,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.hamitmizrak.ecodation_techistanbul_blockchain/com.hamitmizrak.ecodation_techistanbul_blockchain.HelloApplication
+                                com.hamitmizrak.ecodation_techistanbul_blockchain/com.hamitmizrak.HelloApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

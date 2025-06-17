@@ -1,4 +1,4 @@
-package com.hamitmizrak.ecodation_techistanbul_blockchain;
+package com.hamitmizrak;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

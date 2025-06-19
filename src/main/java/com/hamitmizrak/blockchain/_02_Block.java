@@ -13,7 +13,7 @@ import java.util.List;
  - Kendisinin hash
   */
 
-public class _01_Block {
+public class _02_Block {
 
     // FIELD
 
@@ -24,7 +24,7 @@ public class _01_Block {
     private String timestamp;
 
     // Blok içindeki yer alan işlemlerin (transfer, veri vs) listelendi
-    private List<Transaction> transactions;
+    private List<_01_Transaction> transactions;
 
     // ;Önceki bloğun SHA-256 hash değerini tutacaktır.
     private String previousHash;

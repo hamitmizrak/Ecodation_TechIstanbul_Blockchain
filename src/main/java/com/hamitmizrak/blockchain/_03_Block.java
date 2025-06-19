@@ -1,19 +1,25 @@
 package com.hamitmizrak.blockchain;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- Bu sınıf bir blok temsilini sağlayacağız.
+ * Bu sınıf bir blok temsilini sağlayacağız.
+ * <p>
+ * Her blok;
+ * - Zincirdeki konumu (index)
+ * - Oluşturma zamanı
+ * - İşlemler manipülasyonu (transactions)
+ * - Önceki bloğun hash(previous hashing)
+ * - Kendisinin hash
+ */
 
- Her blok;
- - Zincirdeki konumu (index)
- - Oluşturma zamanı
- - İşlemler manipülasyonu (transactions)
- - Önceki bloğun hash(previous hashing)
- - Kendisinin hash
-  */
-
+// LOMBOK
+@Getter
+@Setter
 public class _03_Block {
 
     // FIELD
@@ -40,7 +46,7 @@ public class _03_Block {
         this.index = index;
         this.transactions = transactions;
         this.previousHash = previousHash;
-        this.timestamp= LocalDateTime.now().toString();
+        this.timestamp = LocalDateTime.now().toString();
         this.hash = calculateHash(); // Hash hesaplansın ve atansın
     }
 
@@ -48,15 +54,15 @@ public class _03_Block {
     // METHOD
 
     // calculateHash
-    private String calculateHash() {
+    public String calculateHash() {
         //
-        StringBuilder txData= new StringBuilder();
-        for(_01_Transaction temp : transactions){
+        StringBuilder txData = new StringBuilder();
+        for (_01_Transaction temp : transactions) {
             txData.append(temp.toString()); // Her transaction ekle
         }
 
         // Hash girdisi : index + zaman + işlem verisi+ önceki hash
-        String input = index +timestamp +txData + previousHash;
+        String input = index + timestamp + txData + previousHash;
 
         // 1.YOL (MANUEL)
         return _02_Utils.applySHA256(input);
@@ -68,7 +74,7 @@ public class _03_Block {
     }
 
     // Blok hash içeriğinde verilerin tutarlı olup olmadığını doğrulasın.
-    public boolean isValid(){
+    public boolean isValid() {
         return hash.equals(calculateHash());
     }
 

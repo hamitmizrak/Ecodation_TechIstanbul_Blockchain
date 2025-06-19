@@ -2,6 +2,12 @@ package com.hamitmizrak.blockchain;
 
 import lombok.*;
 
+/***
+ * _01_Transaction class, bir kullanıdan başka bir kullanıcya belirli miktarda varlık(token, para vb) gönderilmesini temsil eder.
+ * Her işlemde, gönderen ve alıcı, tutar (Bilgi) metadata mevcuttur
+ */
+
+
 // LOMBOK
 @Getter
 @Setter
@@ -9,11 +15,6 @@ import lombok.*;
 //@NoArgsConstructor
 @Builder
 
-
-/***
- * _01_Transaction class, bir kullanıdan başka bir kullanıcya belirli miktarda varlık(token, para vb) gönderilmesini temsil eder.
- * Her işlemde, gönderen ve alıcı, tutar (Bilgi) metadata mevcuttur
- */
 public class _01_Transaction {
 
     // FIELD

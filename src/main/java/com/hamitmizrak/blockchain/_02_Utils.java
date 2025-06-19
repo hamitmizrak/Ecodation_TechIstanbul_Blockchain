@@ -1,7 +1,6 @@
 package com.hamitmizrak.blockchain;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 public class _02_Utils {
 

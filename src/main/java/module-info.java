@@ -30,6 +30,7 @@ module com.hamitmizrak {
     // JDBC ile veritabanı bağlantısı kurabilmek için gerekli modül
     // Java'daki SQL işlemlerini (Connection, Statement, ResultSet vb.) gerçekleştirebilmek için gereklidir.
     requires java.sql;
+    requires org.apache.commons.codec;
 
     // #######################################################################################
     // Paket Erişimlerine İzin vermek

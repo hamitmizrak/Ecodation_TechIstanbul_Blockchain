@@ -1,7 +1,5 @@
 package com.hamitmizrak.blockchain;
 
-import org.controlsfx.tools.Utils;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,7 +14,7 @@ import java.util.List;
  - Kendisinin hash
   */
 
-public class _02_Block {
+public class _03_Block {
 
     // FIELD
 
@@ -38,7 +36,7 @@ public class _02_Block {
 
     // CONSTRUCTOR
 
-    public _02_Block(int index, List<_01_Transaction> transactions, String previousHash) {
+    public _03_Block(int index, List<_01_Transaction> transactions, String previousHash) {
         this.index = index;
         this.transactions = transactions;
         this.previousHash = previousHash;
@@ -48,6 +46,7 @@ public class _02_Block {
 
 
     // METHOD
+
     // calculateHash
     private String calculateHash() {
         //
@@ -58,7 +57,14 @@ public class _02_Block {
 
         // Hash girdisi : index + zaman + işlem verisi+ önceki hash
         String input = index +timestamp +txData + previousHash;
-        return Utils   // Yardımcı sınıf ile hash hesaplanan
+
+        // 1.YOL (MANUEL)
+        return _02_Utils.applySHA256(input);
+
+        // 2.YOL (LIBRARIES )
+        // SHA-256 gibi hash fonksiyonları için Apache Commons Codec
+        // String hash = DigestUtils.sha256Hex(input);
+        // return hash;   // Yardımcı sınıf ile hash hesaplanan
     }
 
     // Blok hash içeriğinde verilerin tutarlı olup olmadığını doğrulasın.
@@ -71,4 +77,4 @@ public class _02_Block {
     public List<_01_Transaction> getTransactions() {
         return transactions;
     }
-} // end _02_Block
+} // end _03_Block

@@ -37,6 +37,7 @@ module com.hamitmizrak {
     // Ana paket (Root package) açılıyor, böylece FXML dosyalarından erişilebilir.
     opens com.hamitmizrak to javafx.fxml;
 
+
     // Controller sınıfları FXML tarafından kullanılacağı için açılması gerekiyor.
     opens com.hamitmizrak.controller to javafx.fxml;
 
@@ -52,6 +53,9 @@ module com.hamitmizrak {
     // #######################################################################################
     // Paket dışa aktarmak
     // `exports` ifadesi, paketin diğer modüller tarafından erişilebilir olmasını sağlar.
+
+    // blockchain paketini dışa açarak controller gibi sınıflardan erişimi mümkün kılıyor.
+    exports com.hamitmizrak.blockchain; // Blockchain paketini dışa aç
 
     // Ana paketi dış dünyaya açıyoruz. Diğer modüller bu paketin içeriğini kullanabilir.
     exports com.hamitmizrak;

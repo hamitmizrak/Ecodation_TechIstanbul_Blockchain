@@ -10,6 +10,7 @@ package com.hamitmizrak.blockchain;
 import lombok.*;
 
 // LOMBOK
+// Lombok anotasyonları ile getter/setter, builder pattern gibi yardımcı yapılar otomatik oluşturulur.
 @Getter
 @Setter
 
@@ -21,9 +22,6 @@ import lombok.*;
  * - Tutar (amount): Gönderilen miktar
  * Bu sınıf, blockchain üzerindeki işlemleri temsil ederken aynı zamanda veri takibini de kolaylaştırır.
  */
-
-// Lombok anotasyonları ile getter/setter, builder pattern gibi yardımcı yapılar otomatik oluşturulur.
-
 
 public class _01_Transaction {
 

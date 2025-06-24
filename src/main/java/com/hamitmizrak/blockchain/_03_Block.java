@@ -3,7 +3,6 @@
 // ============================================
 package com.hamitmizrak.blockchain;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -77,5 +76,17 @@ public class _03_Block {
      */
     public List<_01_Transaction> getTransactions() {
         return transactions;
+    }
+
+    // toString
+    @Override
+    public String toString() {
+        return "_03_Block{" +
+                "index=" + index +
+                ", timestamp='" + timestamp + '\'' +
+                ", transactions=" + transactions +
+                ", previousHash='" + previousHash + '\'' +
+                ", hash='" + hash + '\'' +
+                '}';
     }
 } // end _03_Block

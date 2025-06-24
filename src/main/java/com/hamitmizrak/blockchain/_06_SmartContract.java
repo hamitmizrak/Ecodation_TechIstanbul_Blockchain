@@ -25,7 +25,7 @@ public class _06_SmartContract {
 
     // FIELD
     // Bağlı olduğu blockchain
-    private _04_Blockchain blockchain = new _04_Blockchain();
+    private _04_Blockchain blockchain;
 
     // Henüz blog haline gelmemiş işlemler
     private List<_01_Transaction> pendingTransactions = new ArrayList<>();
@@ -69,11 +69,11 @@ public class _06_SmartContract {
                 _03_Block block = new _03_Block(
                         blockchain.getChain().size(),
                         new ArrayList<>(pendingTransactions),
-                        blockchain.getLatestBlock().getPreviousHash()
+                        blockchain.getLatestBlock().getHash() // getPreviousHash()
                 );
                 blockchain.addBlock(block);
                 pendingTransactions.clear();
-                return "✅ Block oluşturuldu ve işlem zinciri eklendi";
+                return "\n✅ Block oluşturuldu ve işlem zinciri eklendi";
             }
             return "ℹ️ İşlem havuza eklendi. Yeni bir blok için kalan işlem ==> " + (BLOCK_SIZE - pendingTransactions.size());
         } else {

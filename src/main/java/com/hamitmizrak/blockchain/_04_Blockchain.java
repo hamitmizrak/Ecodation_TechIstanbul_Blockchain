@@ -29,6 +29,14 @@ public class _04_Blockchain {
         chain.add(createGenesisBlock());
     }
 
+    // toString
+    @Override
+    public String toString() {
+        return "_04_Blockchain{" +
+                "chain=" + chain +
+                '}';
+    }
+
     /**
      * Sistemin başlangıç bloğunu (Genesis Block) oluşturur.
      * Bu blok sabit değerler içerir ve manuel olarak tanımlanır.
@@ -93,7 +101,7 @@ public class _04_Blockchain {
     public String printBlockChain() {
         StringBuilder builder = new StringBuilder();
         for (_03_Block block : chain) {
-            builder.append(SpecialColor.BLUE).append("Block").append(SpecialColor.RESET).append(block.getIndex()).append("\n")
+            builder.append(SpecialColor.BLUE).append("Block ").append(SpecialColor.RESET).append(block.getIndex()).append("\n")
                     .append(SpecialColor.BLUE).append("\uD83D\uDD52 Time: ").append(SpecialColor.RESET).append(block.getTimestamp()).append("\n")
                     .append(SpecialColor.BLUE).append("\uD83D\uDD22 Hash: ").append(SpecialColor.RESET).append(block.getHash()).append("\n")
                     .append(SpecialColor.BLUE).append("↩\uFE0F Prev: ").append(SpecialColor.RESET).append(block.getPreviousHash()).append("\n")

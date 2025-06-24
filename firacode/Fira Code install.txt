@@ -1,0 +1,15 @@
+## Fira Code
+1- Google Font: https://fonts.google.com/specimen/Fira+Code?subset=greek&preview.text=%C4%9F%C3%BC%C5%9F%C3%A7i&preview.text_type=custom
+
+2- Settings
+Font Family: Fira Code
+
+3- VS-CODE (Settings JSON)
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+
+4- INTELLIJ IDEA
+ settings > editor > font >
+ Fira Code
+ Enable
+  

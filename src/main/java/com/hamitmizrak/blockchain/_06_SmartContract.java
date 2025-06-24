@@ -7,8 +7,15 @@ package com.hamitmizrak.blockchain;
 // ❌
 // ✅
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
+
+// LOMBOK
+@Getter
+@Setter
 
 /**
  * SmartContract sınıfı, blok zinciri üzerinde işlemleri yöneten akıllı sözleşme simülasyonudur.
@@ -68,7 +75,7 @@ public class _06_SmartContract {
                 pendingTransactions.clear();
                 return "✅ Block oluşturuldu ve işlem zinciri eklendi";
             }
-            return "ℹ️ İşlem havuza eklendi. Yeni bir blok için kaln işlem " + (BLOCK_SIZE - pendingTransactions.size());
+            return "ℹ️ İşlem havuza eklendi. Yeni bir blok için kalan işlem ==> " + (BLOCK_SIZE - pendingTransactions.size());
         } else {
             return "❌ Bakiye yetersiz";
         }

@@ -15,7 +15,6 @@ import java.util.Map;
 // LOMBOK
 @Getter
 @Setter
-@Builder
 
 /**
  * Wallet sınıfı, kullanıcı cüzdanlarını ve bakiyeleri yönetmek için kullanılır.

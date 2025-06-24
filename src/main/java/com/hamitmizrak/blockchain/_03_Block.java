@@ -13,7 +13,6 @@ import java.util.List;
 // LOMBOK
 @Getter
 @Setter
-@Builder
 
 /**
  * _03_Block sınıfı, blockchain içerisindeki bir blok birimini temsil eder.

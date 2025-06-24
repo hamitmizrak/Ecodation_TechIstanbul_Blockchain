@@ -11,7 +11,6 @@ import java.util.List;
 // LOMBOK
 @Getter
 @Setter
-@Builder
 
 /**
  * _04_Blockchain sınıfı, bloklardan oluşan zinciri (blockchain) yöneten temel sınıftır.
@@ -95,9 +94,9 @@ public class _04_Blockchain {
         StringBuilder builder = new StringBuilder();
         for (_03_Block block : chain) {
             builder.append(SpecialColor.BLUE).append("Block").append(SpecialColor.RESET).append(block.getIndex()).append("\n")
-                    .append(SpecialColor.BLUE).append("\uD83D\uDD52 Time").append(SpecialColor.RESET).append(block.getTimestamp()).append("\n")
-                    .append(SpecialColor.BLUE).append("\uD83D\uDD22 Hash").append(SpecialColor.RESET).append(block.getHash()).append("\n")
-                    .append(SpecialColor.BLUE).append("↩\uFE0F Prev").append(SpecialColor.RESET).append(block.getPreviousHash()).append("\n")
+                    .append(SpecialColor.BLUE).append("\uD83D\uDD52 Time: ").append(SpecialColor.RESET).append(block.getTimestamp()).append("\n")
+                    .append(SpecialColor.BLUE).append("\uD83D\uDD22 Hash: ").append(SpecialColor.RESET).append(block.getHash()).append("\n")
+                    .append(SpecialColor.BLUE).append("↩\uFE0F Prev: ").append(SpecialColor.RESET).append(block.getPreviousHash()).append("\n")
                     .append(SpecialColor.YELLOW).append("\uD83D\uDCE6 Transaction \n").append(SpecialColor.RESET);
 
             for (_01_Transaction transaction : block.getTransactions()) {

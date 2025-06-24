@@ -12,7 +12,6 @@ import lombok.*;
 // LOMBOK
 @Getter
 @Setter
-@Builder
 
 /**
  * _01_Transaction sınıfı, bir kullanıcıdan başka bir kullanıcıya belirli miktarda varlık (örneğin token veya para) gönderimini temsil eder.

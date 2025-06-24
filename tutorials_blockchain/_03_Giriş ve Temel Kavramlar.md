@@ -158,9 +158,3 @@ Blockchain’in güvenliğini sağlayan en kritik unsur **kriptografi**dir. Teme
 | Public/Private Key | Kimlik ve güvenlik altyapısını oluşturan kriptografik anahtarlar |
 
 ---
-
-Bu başlıkların her birini uygulamalı olarak da gösterebilirim. Örneğin:
-
-* Hash algoritması örneği
-* Blok sınıfı kodu (Java/Python)
-* Anahtar üretim simülasyonu

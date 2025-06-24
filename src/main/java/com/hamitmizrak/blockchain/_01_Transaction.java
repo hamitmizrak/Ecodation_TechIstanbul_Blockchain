@@ -1,46 +1,55 @@
+// ============================================
+// 🔰 PROJE ADI: JavaFX Smart Contract Blockchain Simulator
+// ============================================
+
+// ============================================
+// 🔧 1. _01_Transaction.java
+// ============================================
 package com.hamitmizrak.blockchain;
 
 import lombok.*;
 
-/***
- * _01_Transaction class, bir kullanıdan başka bir kullanıcya belirli miktarda varlık(token, para vb) gönderilmesini temsil eder.
- * Her işlemde, gönderen ve alıcı, tutar (Bilgi) metadata mevcuttur
+/**
+ * _01_Transaction sınıfı, bir kullanıcıdan başka bir kullanıcıya belirli miktarda varlık (örneğin token veya para) gönderimini temsil eder.
+ * Her işlem üç ana bileşen içerir:
+ * - Gönderen (from): İşlemi başlatan kişinin kimliği veya cüzdan adresi
+ * - Alıcı (to): Transferi alan kişi ya da cüzdan adresi
+ * - Tutar (amount): Gönderilen miktar
+ * Bu sınıf, blockchain üzerindeki işlemleri temsil ederken aynı zamanda veri takibini de kolaylaştırır.
  */
 
-
-// LOMBOK
+// Lombok anotasyonları ile getter/setter, builder pattern gibi yardımcı yapılar otomatik oluşturulur.
 @Getter
 @Setter
-//@AllArgsConstructor
-//@NoArgsConstructor
 @Builder
-
 public class _01_Transaction {
 
-    // FIELD
-    // Gönderen kişinin adı veya Cüzdan ID'si
+    // Gönderen kişinin adı ya da cüzdan kimliği
     public String from;
 
-    // Alıcı kişinin adı veya cüzdan ID'si
+    // Alıcı kişinin adı ya da cüzdan kimliği
     public String to;
 
-    // Transfer edilen miktar
+    // Transfer edilen miktar (örneğin: 150.0 Token)
     public double amount;
 
-    // CONSTRUCTOR (Parametreli Constructor)
     /**
-     * Kurucu metot (Constructor):
-     * @param from: Gönderen
-     * @param to: Alıcı
-     * @param amount: Transfer miktarı
-     * */
+     * Parametreli kurucu metot.
+     * Bu metod ile bir transfer işlemi oluşturulurken ilgili alanlar doğrudan tanımlanır.
+     * @param from Gönderen kişi ya da cüzdan ID'si
+     * @param to Alıcı kişi ya da cüzdan ID'si
+     * @param amount Gönderilecek miktar
+     */
     public _01_Transaction(String from, String to, double amount) {
         this.from = from;
         this.to = to;
         this.amount = amount;
     }
 
-    // TOSTRING
+    /**
+     * toString() metodu, nesnenin okunabilir biçimde yazdırılması için özelleştirilmiştir.
+     * Örneğin: _01_Transaction{from='Ali', to='Veli', amount=100.0}
+     */
     @Override
     public String toString() {
         return "_01_Transaction{" +

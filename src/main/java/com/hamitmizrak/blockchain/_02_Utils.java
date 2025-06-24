@@ -1,35 +1,55 @@
+// ============================================
+// 🔧 2. _02_Utils.java
+// ============================================
 package com.hamitmizrak.blockchain;
 
 import java.security.MessageDigest;
 
+/**
+ * _02_Utils sınıfı, çeşitli yardımcı metodları içeren bir utility (araç) sınıfıdır.
+ * Bu sınıfta yer alan applySHA256 metodu, verilen bir girdinin SHA-256 algoritması kullanılarak kriptografik özetinin alınmasını sağlar.
+ * Bu yöntem, verinin bütünlüğünü kontrol etmek ve blockchain güvenliğini sağlamak için kullanılır.
+ */
 public class _02_Utils {
 
-    // FIELD
+    // SHA-256 algoritma adı sabiti
     private final static String ALGORITHM_256 = "SHA-256";
+
+    // Karakter kodlaması sabiti (UTF-8 Türkçe karakter desteği)
     private final static String UTF8 = "UTF-8";
 
-    // Hash (throws NoSuchAlgorithmException )
+    /**
+     * SHA-256 algoritması ile verilen string girdinin hash (özet) değerini hesaplar.
+     * Bu hash değeri, genellikle blok verilerinin bütünlüğünü sağlamak amacıyla kullanılır.
+     *
+     * @param input Hash değeri alınacak giriş verisi
+     * @return SHA-256 ile şifrelenmiş hexadecimal formatında string
+     */
     public static String applySHA256(String input) {
         try {
+            // SHA-256 için MessageDigest nesnesi oluşturulur
             MessageDigest digest = MessageDigest.getInstance(ALGORITHM_256);
 
-            // Byte Dizi
-            byte[] hash = digest.digest(input.getBytes(UTF8)); // üğşçö
+            // Giriş verisi byte dizisine dönüştürülür (UTF-8 karakter seti kullanılarak)
+            byte[] hash = digest.digest(input.getBytes(UTF8));
 
-            // Hexadecimal (16) 0123456789abcdef
+            // Hexadecimal formatta string'e çevrilmek üzere StringBuilder kullanılır
             StringBuilder hexSting = new StringBuilder();
 
-            // forEach
+            // Her byte değeri hexadecimal'e çevrilir
             for (byte temp : hash) {
                 String hex = Integer.toHexString(0xff & temp);
-                // Conditional
+                // Tek karakterli sonuçların başına 0 eklenir (örneğin 'a' yerine '0a')
                 if (hex.length() == 1) {
                     hexSting.append('0');
                 }
                 hexSting.append(hex);
             }
+
+            // Oluşan tüm hexadecimal karakterler birleştirilerek geri döndürülür
             return hexSting.toString();
         } catch (Exception exception) {
+            // Herhangi bir hata oluşursa runtime exception fırlatılır
             throw new RuntimeException(exception);
         }
     } // end applySHA256

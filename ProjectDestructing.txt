@@ -1,13 +1,22 @@
-src/
-├── com.hamitmizrak._javafx.dao/
-│   ├── UserDAO.java
-│   ├── DBConnection.java
-├── com.hamitmizrak._javafx.dto/
-│   ├── UserDTO.java
-├── com.hamitmizrak._javafx.controller/
-│   ├── LoginController.java
-│   ├── RegisterController.java
-├── view/
-│   ├── login.fxml
-│   ├── register.fxml
-├── MainApp.java
+📦 src
+└── 📁 main
+    ├── 📁 java
+    │   └── 📁 com.hamitmizrak
+    │       ├── 📁 blockchain        ← Blockchain ile ilgili sınıflar buraya
+    │       │   ├── Block.java
+    │       │   ├── Blockchain.java
+    │       │   ├── SmartContract.java
+    │       │   ├── Transaction.java
+    │       │   ├── Wallet.java
+    │       │   └── Utils.java
+    │       ├── 📁 controller        ← JavaFX arayüz kontrolü
+    │       │   └── HelloController.java
+    │       ├── 📁 dao               ← (Gerekiyorsa veri erişim)
+    │       ├── 📁 database          ← (Varsa veritabanı bağlantıları)
+    │       ├── 📁 dto               ← (Varsa veri transfer nesneleri)
+    │       ├── 📁 utils             ← (Genel yardımcı sınıflar)
+    │       ├── HelloApplication.java
+    │       └── module-info.java
+    └── 📁 resources
+        └── 📁 view
+            └── main_view.fxml

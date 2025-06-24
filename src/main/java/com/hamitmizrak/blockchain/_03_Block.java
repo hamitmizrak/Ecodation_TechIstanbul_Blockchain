@@ -1,3 +1,6 @@
+// ============================================
+// 🔧 3. _03_Block.java
+// ============================================
 package com.hamitmizrak.blockchain;
 
 import lombok.Getter;
@@ -7,79 +10,68 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 /**
- * Bu sınıf bir blok temsilini sağlayacağız.
- * <p>
- * Her blok;
- * - Zincirdeki konumu (index)
- * - Oluşturma zamanı
- * - İşlemler manipülasyonu (transactions)
- * - Önceki bloğun hash(previous hashing)
- * - Kendisinin hash
+ * _03_Block sınıfı, blockchain içerisindeki bir blok birimini temsil eder.
+ * Her blok; işlem bilgilerini, zaman damgasını, zincirdeki sırasını ve önceki bloğun hash'ini içerir.
+ * Bu bilgilerle birlikte kendi hash'i de üretilir ve zincir yapısında veri güvenliği sağlanmış olur.
  */
-
-// LOMBOK
 @Getter
 @Setter
 public class _03_Block {
 
-    // FIELD
-
-    // Zincirdeki sıra sayısını tutar. Genesis: Block 0 olur, bundan sonraki yapılarda 1,2,3..
+    // Blok zincirinde kaçıncı sırada olduğunu belirtir. Genesis block genellikle index 0’dır.
     private int index;
 
-    // Block'un oluşturulma zamanı (tarih -saat)
+    // Blok'un oluşturulduğu zamanı (tarih ve saat) belirtir.
     private String timestamp;
 
-    // Blok içindeki yer alan işlemlerin (transfer, veri vs) listelendi
+    // Bu blok içerisinde yer alan işlemlerin listesi (transferler vb.).
     private List<_01_Transaction> transactions;
 
-    // Bu bloktan önce gelen bloğun hash değeri
-    // Önceki bloğun SHA-256 hash değerini tutacaktır.
+    // Bir önceki bloğun hash değeri. Bu alan zincirin bütünlüğü için kritik öneme sahiptir.
     private String previousHash;
 
-    // Bu bloğun kendi hash değeri olarak karşımıza geliyor(Blog kimliği)
+    // Bu bloğun kendi hash değeri. Blok içeriğinden üretilir ve değişmezlik sağlar.
     private String hash;
 
-    // CONSTRUCTOR
-
+    /**
+     * Blok oluşturulurken, gerekli bilgiler alınır ve oluşturulma zamanı ve hash otomatik atanır.
+     * @param index Blok sırası
+     * @param transactions İşlemlerin listesi
+     * @param previousHash Önceki bloğun hash değeri
+     */
     public _03_Block(int index, List<_01_Transaction> transactions, String previousHash) {
         this.index = index;
         this.transactions = transactions;
         this.previousHash = previousHash;
         this.timestamp = LocalDateTime.now().toString();
-        this.hash = calculateHash(); // Hash hesaplansın ve atansın
+        this.hash = calculateHash();
     }
 
-
-    // METHOD
-
-    // calculateHash
+    /**
+     * Bu metod, bloğun tüm içeriğini kullanarak SHA-256 algoritması ile hash hesaplar.
+     * @return Bu bloğa ait hash değeri (String)
+     */
     public String calculateHash() {
-        //
         StringBuilder txData = new StringBuilder();
         for (_01_Transaction temp : transactions) {
-            txData.append(temp.toString()); // Her transaction ekle
+            txData.append(temp.toString());
         }
-
-        // Hash girdisi : index + zaman + işlem verisi+ önceki hash
         String input = index + timestamp + txData + previousHash;
-
-        // 1.YOL (MANUEL)
         return _02_Utils.applySHA256(input);
-
-        // 2.YOL (LIBRARIES )
-        // SHA-256 gibi hash fonksiyonları için Apache Commons Codec
-        // String hash = DigestUtils.sha256Hex(input);
-        // return hash;   // Yardımcı sınıf ile hash hesaplanan
     }
 
-    // Blok hash içeriğinde verilerin tutarlı olup olmadığını doğrulasın.
+    /**
+     * Bu metod, bloğun mevcut hash'inin içeriğe uygun olup olmadığını kontrol eder.
+     * @return true -> blok geçerlidir; false -> blok bozulmuş veya sahte olabilir.
+     */
     public boolean isValid() {
         return hash.equals(calculateHash());
     }
 
-    // GETTER/SETTER
-    // Bloktaki işlemleri dönder
+    /**
+     * Blokta yer alan işlemleri dışarıya döndürür.
+     * @return İşlem listesi
+     */
     public List<_01_Transaction> getTransactions() {
         return transactions;
     }

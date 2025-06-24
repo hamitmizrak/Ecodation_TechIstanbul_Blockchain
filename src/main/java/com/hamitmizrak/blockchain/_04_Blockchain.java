@@ -1,9 +1,17 @@
 package com.hamitmizrak.blockchain;
 
 import com.hamitmizrak.utils.SpecialColor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+
+// LOMBOK
+@Getter
+@Setter
+@Builder
 
 /**
  * _04_Blockchain sınıfı, bloklardan oluşan zinciri (blockchain) yöneten temel sınıftır.
@@ -27,7 +35,7 @@ public class _04_Blockchain {
      * Bu blok sabit değerler içerir ve manuel olarak tanımlanır.
      * @return Genesis bloğu
      */
-    private _03_Block createGenesisBlock() {
+    public _03_Block createGenesisBlock() {
         List<_01_Transaction> genesisTx = new ArrayList<>();
         genesisTx.add(new _01_Transaction("Genesis", "System", 0));
         return new _03_Block(0, genesisTx, "0");
@@ -37,7 +45,7 @@ public class _04_Blockchain {
      * Zincirin en son bloğunu getirir.
      * @return Son blok
      */
-    private _03_Block getLatestBlock() {
+    public _03_Block getLatestBlock() {
         return chain.get(chain.size() - 1);
     }
 
@@ -46,7 +54,7 @@ public class _04_Blockchain {
      * Sadece geçerli bağlantıya sahip bloklar zincire dahil edilir.
      * @param newBlock Eklenmek istenen yeni blok
      */
-    private void addBlock(_03_Block newBlock) {
+    public void addBlock(_03_Block newBlock) {
         if (newBlock.getPreviousHash().equals(getLatestBlock().getHash())) {
             chain.add(newBlock);
         }

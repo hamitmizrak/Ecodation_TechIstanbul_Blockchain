@@ -9,6 +9,11 @@ package com.hamitmizrak.blockchain;
 
 import lombok.*;
 
+// LOMBOK
+@Getter
+@Setter
+@Builder
+
 /**
  * _01_Transaction sınıfı, bir kullanıcıdan başka bir kullanıcıya belirli miktarda varlık (örneğin token veya para) gönderimini temsil eder.
  * Her işlem üç ana bileşen içerir:
@@ -19,9 +24,8 @@ import lombok.*;
  */
 
 // Lombok anotasyonları ile getter/setter, builder pattern gibi yardımcı yapılar otomatik oluşturulur.
-@Getter
-@Setter
-@Builder
+
+
 public class _01_Transaction {
 
     // Gönderen kişinin adı ya da cüzdan kimliği

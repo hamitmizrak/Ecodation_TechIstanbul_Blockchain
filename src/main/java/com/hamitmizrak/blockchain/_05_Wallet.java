@@ -5,8 +5,17 @@ package com.hamitmizrak.blockchain;
 // 🔧 _05_Wallet.java (Açıklamalı)
 // ============================================
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.HashMap;
 import java.util.Map;
+
+// LOMBOK
+@Getter
+@Setter
+@Builder
 
 /**
  * Wallet sınıfı, kullanıcı cüzdanlarını ve bakiyeleri yönetmek için kullanılır.

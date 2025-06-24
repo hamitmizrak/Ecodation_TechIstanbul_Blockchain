@@ -3,19 +3,23 @@
 // ============================================
 package com.hamitmizrak.blockchain;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
+// LOMBOK
+@Getter
+@Setter
+@Builder
+
 /**
  * _03_Block sınıfı, blockchain içerisindeki bir blok birimini temsil eder.
  * Her blok; işlem bilgilerini, zaman damgasını, zincirdeki sırasını ve önceki bloğun hash'ini içerir.
  * Bu bilgilerle birlikte kendi hash'i de üretilir ve zincir yapısında veri güvenliği sağlanmış olur.
  */
-@Getter
-@Setter
 public class _03_Block {
 
     // Blok zincirinde kaçıncı sırada olduğunu belirtir. Genesis block genellikle index 0’dır.

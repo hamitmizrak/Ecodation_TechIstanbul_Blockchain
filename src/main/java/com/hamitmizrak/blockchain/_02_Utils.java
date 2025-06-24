@@ -3,7 +3,16 @@
 // ============================================
 package com.hamitmizrak.blockchain;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.security.MessageDigest;
+
+// LOMBOK
+@Getter
+@Setter
+@Builder
 
 /**
  * _02_Utils sınıfı, çeşitli yardımcı metodları içeren bir utility (araç) sınıfıdır.

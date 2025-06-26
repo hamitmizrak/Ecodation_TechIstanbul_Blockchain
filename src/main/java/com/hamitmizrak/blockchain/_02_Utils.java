@@ -6,7 +6,8 @@ package com.hamitmizrak.blockchain;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.security.MessageDigest;
+import java.nio.charset.StandardCharsets;
+import java.security.*;
 
 // LOMBOK
 @Getter
@@ -17,10 +18,17 @@ import java.security.MessageDigest;
  * Bu sınıfta yer alan applySHA256 metodu, verilen bir girdinin SHA-256 algoritması kullanılarak kriptografik özetinin alınmasını sağlar.
  * Bu yöntem, verinin bütünlüğünü kontrol etmek ve blockchain güvenliğini sağlamak için kullanılır.
  */
+
+// ✅
+// ℹ️
+// ❌
 public class _02_Utils {
 
     // SHA-256 algoritma adı sabiti
     private final static String ALGORITHM_256 = "SHA-256";
+
+    // PublicKey - PrivateKey
+    private final static String SHA256_WITH_RSA = "SHA256withRSA";
 
     // Karakter kodlaması sabiti (UTF-8 Türkçe karakter desteği)
     private final static String UTF8 = "UTF-8";
@@ -60,4 +68,32 @@ public class _02_Utils {
             throw new RuntimeException(exception);
         }
     } // end applySHA256
+
+    // Private Key (sign)
+    public static byte[] sign (String data, PrivateKey privateKey)  {
+        try{
+            Signature privateSignature = Signature.getInstance(SHA256_WITH_RSA);
+            privateSignature.initSign(privateKey);
+            privateSignature.update(data.getBytes(StandardCharsets.UTF_8)); // üğşçöI
+            return privateSignature.sign();
+        }catch (Exception exception){ // throws NoSuchAlgorithmException
+            exception.printStackTrace();
+            throw new RuntimeException(exception);
+        }
+    } // end sign
+
+    // Public Key (Verify)
+    public static boolean verify(String data, byte [] signature, PublicKey publicKey){
+        try{
+            Signature publicSignature = Signature.getInstance(SHA256_WITH_RSA);
+            publicSignature.initVerify(publicKey);
+            publicSignature.update(data.getBytes(StandardCharsets.UTF_8)); // üğşçöI
+            return publicSignature.verify(signature);
+        }catch (Exception exception){ // throws NoSuchAlgorithmException
+            exception.printStackTrace();
+            throw new RuntimeException(exception);
+        }
+    } // end verify
+
+
 } // end _02_Utils

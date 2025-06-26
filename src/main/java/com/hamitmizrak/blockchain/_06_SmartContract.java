@@ -33,7 +33,6 @@ public class _06_SmartContract {
     // Her blokta maksimum İşlem sayısı
     private final int BLOCK_SIZE = 3;
 
-
     /**
      * Kurucu metod: Bağlı blockchain örneği alır.
      *
@@ -42,11 +41,6 @@ public class _06_SmartContract {
     public _06_SmartContract(_04_Blockchain blockchain) {
         this.blockchain = blockchain;
     }
-
-
-    // ✅
-    // ℹ️
-    // ❌
 
     /**
      * Transfer işlemi gerçekleştirmeye çalışır.
@@ -61,7 +55,6 @@ public class _06_SmartContract {
         if (_05_Wallet.transfer(from, to, amout)) {
             _01_Transaction transactionData = new _01_Transaction(from, to, amout);
             pendingTransactions.add(transactionData);
-
 
             // Havuz dolduysa block oluştur
             // public _03_Block(int index, List<_01_Transaction> transactions, String previousHash)

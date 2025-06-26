@@ -1,3 +1,7 @@
+// ============================================
+// 🔧 _04_BlockChain.java (Açıklamalı)
+// ============================================
+
 package com.hamitmizrak.blockchain;
 
 import com.hamitmizrak.utils.SpecialColor;
@@ -17,6 +21,10 @@ import java.util.List;
  * Sistemin başlangıç bloğu (Genesis Block) ile başlar ve her yeni blok önceki bloğa bağlı olarak zincire eklenir.
  * Blok zinciri yapısında veri bütünlüğü, doğrulama ve hash bağlantıları bu sınıf aracılığıyla kontrol edilir.
  */
+
+// ✅
+// ℹ️
+// ❌
 public class _04_Blockchain {
 
     // Blockchain zincirini oluşturan blokların listesi

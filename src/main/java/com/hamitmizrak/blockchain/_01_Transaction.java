@@ -7,7 +7,11 @@
 // ============================================
 package com.hamitmizrak.blockchain;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.security.PrivateKey;
+import java.security.PublicKey;
 
 // LOMBOK
 // Lombok anotasyonları ile getter/setter, builder pattern gibi yardımcı yapılar otomatik oluşturulur.
@@ -23,6 +27,9 @@ import lombok.*;
  * Bu sınıf, blockchain üzerindeki işlemleri temsil ederken aynı zamanda veri takibini de kolaylaştırır.
  */
 
+// ✅
+// ℹ️
+// ❌
 public class _01_Transaction {
 
     // Gönderen kişinin adı ya da cüzdan kimliği
@@ -34,11 +41,15 @@ public class _01_Transaction {
     // Transfer edilen miktar (örneğin: 150.0 Token)
     public double amount;
 
+    // PublicKey - PrivateKey
+    private byte[] signature;
+
     /**
      * Parametreli kurucu metot.
      * Bu metod ile bir transfer işlemi oluşturulurken ilgili alanlar doğrudan tanımlanır.
-     * @param from Gönderen kişi ya da cüzdan ID'si
-     * @param to Alıcı kişi ya da cüzdan ID'si
+     *
+     * @param from   Gönderen kişi ya da cüzdan ID'si
+     * @param to     Alıcı kişi ya da cüzdan ID'si
      * @param amount Gönderilecek miktar
      */
     public _01_Transaction(String from, String to, double amount) {
@@ -59,4 +70,18 @@ public class _01_Transaction {
                 ", amount=" + amount +
                 '}';
     }
+
+    // METHOD
+    // PRIVATE-KEY
+    public void signTransaction(PrivateKey privateKey) {
+        String data = "gönderici: " + from + " alıcı: " + to + "Miktar" + amount;
+        this.signature = _02_Utils.sign(data, privateKey);
+    } // end signTransaction (Private)
+
+    // PUBLIC-KEY
+    public boolean isSignatureValid(PublicKey publicKey) {
+        String data = "gönderici: " + from + " alıcı: " + to + "Miktar" + amount;
+        return _02_Utils.verify(data, signature, publicKey);
+    } // end isSignatureValid (Public)
+
 } // end _01_Transaction

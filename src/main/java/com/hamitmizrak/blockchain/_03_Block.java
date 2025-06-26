@@ -18,6 +18,10 @@ import java.util.List;
  * Her blok; işlem bilgilerini, zaman damgasını, zincirdeki sırasını ve önceki bloğun hash'ini içerir.
  * Bu bilgilerle birlikte kendi hash'i de üretilir ve zincir yapısında veri güvenliği sağlanmış olur.
  */
+
+// ✅
+// ℹ️
+// ❌
 public class _03_Block {
 
     // Blok zincirinde kaçıncı sırada olduğunu belirtir. Genesis block genellikle index 0’dır.
@@ -81,7 +85,7 @@ public class _03_Block {
     // toString
     @Override
     public String toString() {
-        return "_03_Block{" +
+        return "_03_Block {" +
                 "index=" + index +
                 ", timestamp='" + timestamp + '\'' +
                 ", transactions=" + transactions +

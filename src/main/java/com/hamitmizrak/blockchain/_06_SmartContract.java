@@ -18,8 +18,8 @@ import java.util.List;
 @Setter
 
 /**
- * SmartContract sınıfı, blok zinciri üzerinde işlemleri yöneten akıllı sözleşme simülasyonudur.
- * İşlem havuzu tutar, işlemleri bloklara dönüştürür ve zincire ekler.
+  SmartContract sınıfı, blok zinciri üzerinde işlemleri yöneten akıllı sözleşme simülasyonudur.
+  İşlem havuzu tutar, işlemleri bloklara dönüştürür ve zincire ekler.
  */
 public class _06_SmartContract {
 
@@ -35,7 +35,6 @@ public class _06_SmartContract {
 
     /**
      * Kurucu metod: Bağlı blockchain örneği alır.
-     *
      * @param blockchain Kullanılacak blockchain
      */
     public _06_SmartContract(_04_Blockchain blockchain) {

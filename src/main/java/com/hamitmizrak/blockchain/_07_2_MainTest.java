@@ -1,10 +1,12 @@
 package com.hamitmizrak.blockchain;
 
 import com.hamitmizrak.utils.SpecialColor;
-
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
+// Java 7, Oracle tarafından 28 Temmuz 2011 tarihinde resmî olarak yayımlandı.
 public class _07_2_MainTest {
 
     // Scanner
@@ -15,6 +17,9 @@ public class _07_2_MainTest {
 
     // UserData
     private static final String[] userData = new String[3];
+
+    // DoS (Denial of Service) : Saldırılarına karşı koruma
+    private static Map<String, Long> lastTransactionTime = new HashMap<>();
 
     // 🧱 Blockchain ve smart Contract
     static _04_Blockchain blockchain = new _04_Blockchain();
@@ -54,16 +59,7 @@ public class _07_2_MainTest {
         }
     } // end Wallet
 
-    // Chooise  InputMismatchException
-    /*
-    Exception in thread "main" java.util.InputMismatchException
-	at java.base/java.util.Scanner.throwFor(Scanner.java:939)
-	at java.base/java.util.Scanner.next(Scanner.java:1594)
-	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
-	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
-	at com.hamitmizrak/com.hamitmizrak.blockchain._07_2_MainTest.userChooise(_07_2_MainTest.java:72)
-	at com.hamitmizrak/com.hamitmizrak.blockchain._07_2_MainTest.main(_07_2_MainTest.java:211)
-    * */
+    // Chooise
     private static void userChooise() {
         walletAdd();
         while (running) {
@@ -98,11 +94,24 @@ public class _07_2_MainTest {
                     Arrays.asList(userData).forEach(user -> System.out.print(user + " "));
                     // scanner.nextLine(); //dummy enter
 
+                    // Kullanım(işlem gönderme sırasında)
+                    long now = System.currentTimeMillis();
+
                     // Gönderen Wallet(user) eşleşmiyorsa hata versin
                     String from;
                     do {
                         System.out.print("\n👤 Gönderen: ");
                         from = scanner.nextLine();
+
+                        if(lastTransactionTime.containsKey(from)){
+                            long diff = now -lastTransactionTime.get(from);
+                            if(diff<5000){ // 5 saniye geçikmeli
+                                System.out.println("⚠️ Çok sık işlem gönderiyorsunuz ne yapıyorsun sen !!!!, Lütfen bekleyin");
+                                return;
+                            }
+                        }
+                        lastTransactionTime.put(from,now);
+                        // Validation
                         if (!_05_Wallet.getBalances().containsKey(from)) {
                             System.out.println("⚠️ Geçersiz gönderen kullanıcı! Tekrar deneyin.");
                         }

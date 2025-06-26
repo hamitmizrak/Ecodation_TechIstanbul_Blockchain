@@ -76,6 +76,13 @@
 
     <!-- start dependencies-->
     <dependencies>
+        <!-- gson-->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+
         <!-- SHA-256 gibi hash fonksiyonları için Apache Commons Codec -->
         <dependency>
             <groupId>commons-codec</groupId>

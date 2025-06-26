@@ -24,14 +24,6 @@ public class _05_Wallet {
     // Kullanıcı adını (veya ID'sini) bakiye ile eşleyen map
     private static Map<String, Double> balances = new HashMap<>();
 
-    // toString()
-
-
-    @Override
-    public String toString() {
-        return "_05_Wallet{}";
-    }
-
     /**
      * Yeni bir kullanıcı cüzdanı oluşturur.
      * Eğer kullanıcı zaten varsa, bakiye değiştirilmez.
@@ -42,7 +34,6 @@ public class _05_Wallet {
         // Yeni kullanıcıya varsayılan olarak 100 birim bakiyesi olsun
         balances.putIfAbsent(user, 100.0);
     }
-
 
     /**
      * İki kullanıcı arasında transfer gerçekleştirir.

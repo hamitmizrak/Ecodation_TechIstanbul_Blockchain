@@ -79,7 +79,7 @@ public class _07_2_MainTest {
 
             // Chooise
             int chooise = scanner.nextInt();
-            scanner.nextLine(); // dummy enter
+            scanner.nextLine(); // Clean - dummy enter
 
             switch (chooise) {
                 // 1. 💸 Transfer Yap
@@ -144,6 +144,9 @@ public class _07_2_MainTest {
 
                     // Digital imza ile güvenli işlem 44444444
 
+                    // İşlem sayısını artırmak
+                    _05_Wallet.incrementTransactionCount(from);
+
                     // Transfer başlasın
                     System.out.println(smartContract.executeTransfer(from, to, amount));
                     break;
@@ -187,10 +190,10 @@ public class _07_2_MainTest {
                             .filter(temp -> temp.getAmount() > 0) // Sadece gerçek transferlerde
                             .mapToDouble(_01_Transaction::getAmount)
                             .sum();
-                    System.out.println("\n Toplam Transfer Edilen Miktar" + totalAmount);
+                    System.out.println("\nToplam Transfer Edilen Miktar: " +SpecialColor.YELLOW+ totalAmount+SpecialColor.RESET);
 
                     // 3 - Her blockta kaç işlem var ?
-                    System.out.println("\n Blok bazlı işlem sayısı");
+                    System.out.println("\nBlok bazlı işlem sayısı");
                     int i = 0;
                     for (_03_Block block : blockchain.getChain()) {
                         System.out.println("Block " + i + ": " + block.getTransactions().size() + " işlem");

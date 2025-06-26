@@ -1,10 +1,8 @@
 package com.hamitmizrak.blockchain;
 
 import com.hamitmizrak.utils.SpecialColor;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+
+import java.util.*;
 
 // Java 7, Oracle tarafından 28 Temmuz 2011 tarihinde resmî olarak yayımlandı.
 public class _07_2_MainTest {
@@ -162,9 +160,51 @@ public class _07_2_MainTest {
                     scanner.nextLine();
 
                     // Digital imza ile güvenli işlem 44444444
+                    // Dijital imza ile ilem g羹venlii
+                    // 1. C羹zdanlardan Anahtarlar Alınır:
+                    // Gönderen ve alıcının c羹zdanları alınır.
+                    //Bu c羹zdanlardan private ve public key eriilebilir hale gelir.
+                    _05_Wallet sender = _05_Wallet.getWalletByName(from);
+                    _05_Wallet receiver = _05_Wallet.getWalletByName(to);
 
-                    // İşlem sayısını artırmak
+                    // 2. ilem Oluturulur:
+                    // ilem objesi, public key'ler ve miktar ile hazırlanır.
+                    _01_Transaction signedTx = new _01_Transaction(
+                            sender.getPublicKeyString(),
+                            receiver.getPublicKeyString(),
+                            amount
+                    );
+                    // 3. imza Oluturulur (Private Key ile):
+                    // Gönderenin özel anahtarı (private key) ile bu ilem imzalanır.
+                    //Bu aama, "gerçekten o c羹zdan sahibi mi" kontrol羹n羹n temelidir.
+                    signedTx.signTransaction(sender.getPrivateKey());
+                    boolean valid = signedTx.isSignatureValid(sender.getPublicKey());
+
+                    // Daha sonra bu imzanın geçerli olup olmadıı gönderenin public key'i ile kontrol edilir.
+                    //Eer ilem ya da imza sahte ise dorulama baarısız olur.
+                    if (!valid) {
+                        System.out.println(" işlem imzası geçersiz! Transfer iptal edildi.");
+                        break;
+                    }
+
+                    // işlem sayısını artır
                     _05_Wallet.incrementTransactionCount(from);
+
+                    // Zincire eklemek için yeni blok olutur
+                    List<_01_Transaction> txs = new ArrayList<>();
+                    txs.add(signedTx);
+                    _03_Block newBlock = new _03_Block(blockchain.getChain().size(), txs, blockchain.getLatestBlock().getHash());
+                    blockchain.addBlock(newBlock);
+
+                    System.out.println("ilem baarıyla gerçekletirildi.");
+
+                    System.out.println("\n Dijital imza Detayları:");
+                    System.out.println("Gönderen Adı: " + from);
+                    System.out.println(" Alıcı Adı: " + to);
+                    System.out.println(" Miktar: " + amount);
+                    System.out.println(" Gönderen Private Key: " + sender.getPrivateKeyString());
+                    System.out.println(" Gönderen Public Key: " + sender.getPublicKeyString());
+                    System.out.println(" imza Dorulama Sonucu: " + (valid?  "Geçerli" : "Geçersiz"));
 
                     // Transfer başlasın
                     System.out.println(smartContract.executeTransfer(from, to, amount));
@@ -191,7 +231,24 @@ public class _07_2_MainTest {
                     break;
 
                 case 5:
-                    System.out.println("Dijital İmza Ve Anahtar Yönetimi Testi");
+                    // Her kullanıcı için RSA public-private key çifti oluturuluyor.
+                    System.out.println("===  Dijital imza ve Anahtar Yönetimi Testi ===");
+                    _05_Wallet senderWallet = new _05_Wallet();
+                    _05_Wallet receiverWallet = new _05_Wallet();
+                    _01_Transaction transaction = new _01_Transaction(
+                            senderWallet.getPublicKeyString(),
+                            receiverWallet.getPublicKeyString(),
+                            100
+                    );
+                    transaction.signTransaction(senderWallet.getPrivateKey());
+                    boolean isValid = transaction.isSignatureValid(senderWallet.getPublicKey());
+
+                    System.out.println("--- ilem Detayları ---");
+                    System.out.println(" Gönderen Public Key: " + senderWallet.getPublicKeyString());
+                    System.out.println(" Gönderen Private Key: " + senderWallet.getPrivateKeyString());
+                    System.out.println(" Alıcı Public Key: " + receiverWallet.getPublicKeyString());
+                    System.out.println(" Transfer Miktarı: 100");
+                    System.out.println(" imza Geçerliliği: " + (isValid?  "Geçerli" : "Geçersiz"));
                     break;
 
                 // 6. ✅ İstatiksel Gösterim

@@ -78,8 +78,18 @@ public class _07_2_MainTest {
             System.out.print("Seçiminiz: ");
 
             // Chooise
-            int chooise = scanner.nextInt();
-            scanner.nextLine(); // Clean - dummy enter
+            int chooise ;
+            for(;;){
+                System.out.println("\n" +SpecialColor.GREEN+"Seçiminizi yapınız sadece sayı giriniz"+SpecialColor.RESET);
+                if(scanner.hasNextInt()){ // sadece int
+                    chooise = scanner.nextInt();
+                    scanner.nextLine(); // Clean - dummy enter
+                    break;
+                }else{
+                    System.out.println(SpecialColor.RED+"Hatalı giriş yaptınız Lütfen sadece tamsayı(int) giriniz"+SpecialColor.RESET);
+                    scanner.nextLine(); // Geçersiz girdiyi temizle
+                }
+            }
 
             switch (chooise) {
                 // 1. 💸 Transfer Yap
@@ -196,7 +206,8 @@ public class _07_2_MainTest {
                     System.out.println("\nBlok bazlı işlem sayısı");
                     int i = 0;
                     for (_03_Block block : blockchain.getChain()) {
-                        System.out.println("Block " + i + ": " + block.getTransactions().size() + " işlem");
+                        //System.out.println("Block " + (i+1) + ": " + block.getTransactions().size() + " işlem");
+                        System.out.println("Block " + (i++) + ": " + block.getTransactions().size() + " işlem");
                     }
                     break;
 
